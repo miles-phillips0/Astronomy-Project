@@ -5,18 +5,33 @@ import random
 app = flask.Flask(__name__)
 
 
+planets = [
+    "Mercury",
+    "Venus",
+    "Mars",
+    "Saturn",
+    "Jupiter",
+    "Neptune",
+    "Uranus",
+    "Pluto",
+]
+
+
 def getPlanet():
-    planets = [
-        "Mercury",
-        "Venus",
-        "Mars",
-        "Saturn",
-        "Jupiter",
-        "Neptune",
-        "Uranus",
-        "Pluto",
-    ]
-    planet = planets[random.randint(0, 7)]
+    global planets
+    if len(planets) == 0:
+        planets = [
+            "Mercury",
+            "Venus",
+            "Mars",
+            "Saturn",
+            "Jupiter",
+            "Neptune",
+            "Uranus",
+            "Pluto",
+        ]
+    planet = planets[random.randint(0, len(planets) - 1)]
+    planets.remove(planet)
     return planet
 
 
